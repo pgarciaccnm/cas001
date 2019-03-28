@@ -1,5 +1,5 @@
 {
-  "country": "US",
+  "country": "CA",
   "edition": "Developer",
   "orgPreferences": {
     "enabled": [
@@ -7,6 +7,6 @@
     ],
     "disabled": []
   },
-  "orgName": "Your Company",
-  "adminEmail": "yourname@example.com"
+  "orgName": "CCNM",
+  "adminEmail": "pgarcia@ccnm.edu"
 }
