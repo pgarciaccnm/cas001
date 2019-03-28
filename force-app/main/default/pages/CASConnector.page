@@ -1,0 +1,69 @@
+<apex:page controller="CASConnectorController">
+<apex:slds>
+                <div class="demo-only" >
+                                <article class="slds-tile">
+                                <h1 class="slds-tile__title slds-truncate" title="Salesforce UX">User Identity</h1>
+                                <div class="slds-tile__detail">
+                                <dl class="slds-list_horizontal slds-wrap">
+                                <dt class="slds-item_label slds-text-color_weak slds-truncate" title="First Label">What is a user identity in WebAdMIT?</dt>
+                                <dd class="slds-item_detail" title="Description for second label">Each of the selectable items in the standard WebAdMIT account dropdown are considered to be standard admissions-level user identities. For most universities, this ties to the cohorts of students from each major graduate department:</dd>
+                                </dl>
+                                </div>
+                                </article>
+                                </div>
+               
+<apex:form>
+
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Opportunity Name">Id</div>
+                                </th>
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Account Name">Type</div>
+                                </th>
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Stage">Association</div>
+                                </th>
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Confidence">Cycle</div>
+                                </th>
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Amount">Institution</div>
+                                </th>
+                                </tr>
+                                </thead>
+        <apex:repeat value="{!userIdentities}" var="useridentity">                               
+                                <tbody>
+                                <tr class="slds-hint-parent">
+                                <th data-label="Opportunity Name" scope="row">
+                                <div class="slds-truncate" title="{!useridentity.Id}"><a href="javascript:void(0);" tabindex="-1">{!useridentity.Id}</a></div>
+                                </th>
+                                <td data-label="Account Name">
+                                <div class="slds-truncate" title="{!useridentity.Type}">{!useridentity.Type}</div>
+                                </td>
+                                <td data-label="Prospecting">
+                                <div class="slds-truncate" title="{!useridentity.Association}">{!useridentity.Association}</div>
+                                </td>
+                                <td data-label="Confidence">
+                                <div class="slds-truncate" title="{!useridentity.Cycle}">{!useridentity.Cycle}</div>
+                                </td>
+                                <td data-label="Amount">
+                                <div class="slds-truncate" title="{!useridentity.Institution}">{!useridentity.Institution}</div>
+                                </td>
+                                </tr>
+                                
+                                </tbody>
+        </apex:repeat>
+                                </table>
+        
+
+
+                
+        
+</apex:form>
+
+
+</apex:slds>
+</apex:page>

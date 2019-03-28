@@ -1,11 +1,6 @@
 public with sharing class CASConnector {
-    public CASConnector() {
 
-    }
-
-       public Map<String, Object> applicants;
-    
-    public String identityId {get;set;}
+    public Map<String, Object> applicants;
     
     public String exportListId {get;set;}
     
@@ -44,28 +39,46 @@ public with sharing class CASConnector {
     /**
     This returns the export List
     */
-    public Map<String, Object> reportList(){
-        
-        Map<String, Object> m = (Map<String, Object>) JSON.deserializeUntyped(buildRequest('/api/v1/exports'));
-        
-        return (Map<String, Object>) m.get('exports');
+    public static CASConnectorIdentity getUserIdentities(){
+
+        return (CASConnectorIdentity) JSON.deserialize(getResult('/api/v1/user_identities').getBody(), CASConnectorIdentity.class);
 
     }
     
     
-    public Map<String, Object> reportListByIdentity(String identityId){
+    public Map<String, Object> user_identitiesByIdentity(String identityId){
         
         Map<String, Object> m = (Map<String, Object>)JSON.deserializeUntyped(buildRequest('/api/v1/exports/'+identityId+'/export_files'));
         
         return (Map<String, Object>) m.get('exports');
 
     }
-    
 
-    public Map<String, Object> exportIdentities(){
+    public static HttpResponse getResult(String endpoint){
+
+        //String endpoint = '/api/v1/user_identities';
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+		request.setMethod('GET');
+		request.setEndpoint('https://api.webadmit.org' + endpoint);
+		request.setHeader('x-api-key', '5e86514a4d1c4c05e92004afd0b1360b');
+        HttpResponse response = http.send(request);
+
+        System.System.debug('casResponse'+response);
         
-                
-        return (Map<String, Object>)JSON.deserializeUntyped(buildRequest('/api/v1/user_identities'));
+        System.System.debug('casResponseBody'+response.getBody());
+        
+        if (response.getStatusCode() == 200) {
+            
+            return response;
+        }
+
+        return null;
+    }
+    
+    public Map<String, Object> exportIdentities(){
+              
+        return (Map<String, Object>) JSON.deserializeUntyped(buildRequest('/api/v1/user_identities'));
 
     }
     
