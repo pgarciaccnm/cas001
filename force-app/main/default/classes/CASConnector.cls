@@ -1,3 +1,8 @@
+/**
+* CASConnector is responsible to connect with WebAdmit API and 
+* pull the JSON data from endpoint
+* This returns the Object type associated with the endpoint
+*/
 public with sharing class CASConnector {
 
     public Map<String, Object> applicants;
