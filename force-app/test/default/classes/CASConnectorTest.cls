@@ -25,6 +25,29 @@ public with sharing class CASConnectorTest {
 
     }
 
+    @isTest static void exportTest(){
+       // Create the mock response based on a static resource
+        StaticResourceCalloutMock mock = new StaticResourceCalloutMock();
+        mock.setStaticResource('getCASExport');
+        mock.setStatusCode(200);
+        mock.setHeader('Content-Type', 'application/json;charset=UTF-8');   
+        // Associate the callout with a mock response
+        Test.setMock(HttpCalloutMock.class, mock);
+        // Call method to test             
+        CASConnectorIdentity result = CASConnector.getAllExports();
+        // Verify mock response is not null
+        System.assertNotEquals(null,result,
+            'The callout returned a null response.');
+
+            System.debug('cass'+result);
+
+ 
+        List<CASConnectorIdentity.exports> allExports = (List<CASConnectorIdentity.exports>) result.exports;
+
+       System.assertEquals(363799, allExports.get(0).id); 
+
+    }
+
     @isTest static void exportIdentitiesTest(){
 
         // Create the mock response based on a static resource

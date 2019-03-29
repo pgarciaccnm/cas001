@@ -1,0 +1,68 @@
+<apex:page controller="CASAllExportController">
+        <apex:slds>
+                <div class="demo-only" >
+                                <article class="slds-tile">
+                                <h1 class="slds-tile__title slds-truncate" title="Export/Report">Export/Report</h1>
+                                <div class="slds-tile__detail">
+                                <dl class="slds-list_horizontal slds-wrap">
+                                <dd class="slds-item_detail" title="Description for second label">Retrieve details on all exports (e.g. export templates) that a user has access to across all of their identities. The id returned for each export is the value that needs to be provided in order to run that export.</dd>
+                                </dl>
+                                </div>
+                                </article>
+                                </div>
+               
+<apex:form>
+
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                                <thead>
+                                <tr class="slds-line-height_reset">
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Opportunity Name">Id</div>
+                                </th>
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Account Name">Type</div>
+                                </th>
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Stage">Association</div>
+                                </th>
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Confidence">Cycle</div>
+                                </th>
+                                <th class="" scope="col">
+                                <div class="slds-truncate" title="Amount">Institution</div>
+                                </th>
+                                </tr>
+                                </thead>
+        <apex:repeat value="{!allExportReport}" var="allExport">                               
+                                <tbody>
+                                <tr class="slds-hint-parent">
+                                <th data-label="Opportunity Name" scope="row">
+                                <div class="slds-truncate" title="{!allExport.Id}"><a href="javascript:void(0);" tabindex="-1">{!allExport.Id}</a></div>
+                                </th>
+                                <td data-label="Account Name">
+                                <div class="slds-truncate" title="{!allExport.name}">{!allExport.name}</div>
+                                </td>
+                                <td data-label="Prospecting">
+                                <div class="slds-truncate" title="{!allExport.list_type}">{!allExport.list_type}</div>
+                                </td>
+                                <td data-label="Confidence">
+                                <div class="slds-truncate" title="{!allExport.format}">{!allExport.format}</div>
+                                </td>
+                                <td data-label="Amount">
+                                <div class="slds-truncate" title="{!allExport.mime_type}">{!allExport.mime_type}</div>
+                                </td>
+                                </tr>
+                                
+                                </tbody>
+        </apex:repeat>
+                                </table>
+        
+
+
+                
+        
+</apex:form>
+
+
+</apex:slds>
+</apex:page>

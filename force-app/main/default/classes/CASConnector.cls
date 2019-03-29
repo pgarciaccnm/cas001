@@ -45,6 +45,29 @@ public with sharing class CASConnector {
 
     }
     
+    /**
+    Retrieve details on all exports (e.g. export templates) 
+    that a user has access to across all of their identities. 
+    The id returned for each export is the value that needs to be provided in order to 
+    run that export.
+        {
+        "href": "/api/v1/exports",
+        "exports": [
+            {
+            "id": 29897,
+            "name": "Nightly Banner Export",
+            "list_type": "all",
+            "format": "Comma-Separated Values",
+            "mime_type": "text/csv;charset=iso-8859-1"
+            }
+        ]
+        }
+    */
+    public static CASConnectorIdentity getAllExports(){
+       
+       return (CASConnectorIdentity) JSON.deserialize(getResult('/api/v1/exports').getBody(), CASConnectorIdentity.class);
+
+    }
     
     public Map<String, Object> user_identitiesByIdentity(String identityId){
         
@@ -90,7 +113,10 @@ public with sharing class CASConnector {
 
     }   
     
+    /**
+    DONT TOUCH!!!!!!
     //https://api.webadmit.org/api/v1/exports/414666/export_files/326900
+    */  
     public Map<String, Object> exportFileURL( String exportListId, String exportFileId ){
         
         Map<String, Object> m = (Map<String, Object>)JSON.deserializeUntyped(buildRequest('/api/v1/exports/'+exportListId+'/export_files/'+exportFileId));

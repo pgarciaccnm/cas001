@@ -2,6 +2,8 @@ public with sharing class CASConnectorIdentity {
 
         public String href {get;set;}
 
+        public List<exports> exports;
+
         public List<user_identities> user_identities;
 
         public class user_identities{
@@ -19,6 +21,20 @@ public with sharing class CASConnectorIdentity {
             public String cycle {get; set;}
 
             public String institution {get; set;}
+
+        }
+        public class exports{
+
+            public Integer id {get; set;}
+
+            public String name {get; set;}
+
+            public String list_type {get; set;}
+
+            public String format {get; set;}
+
+            public String mime_type {get; set;}
+
 
         }
 
