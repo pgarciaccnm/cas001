@@ -1,5 +1,5 @@
 <apex:page controller="CASConnectorController">
-<apex:slds>
+<apex:slds >
                 <div class="demo-only" >
                                 <article class="slds-tile">
                                 <h1 class="slds-tile__title slds-truncate" title="Salesforce UX">User Identity</h1>
@@ -12,7 +12,7 @@
                                 </article>
                                 </div>
                
-<apex:form>
+
 
                 <table class="slds-table slds-table_cell-buffer slds-table_bordered">
                                 <thead>
@@ -34,35 +34,49 @@
                                 </th>
                                 </tr>
                                 </thead>
+<apex:form id="identityForm">
         <apex:repeat value="{!userIdentities}" var="useridentity">                               
                                 <tbody>
                                 <tr class="slds-hint-parent">
-                                <th data-label="Opportunity Name" scope="row">
-                                <div class="slds-truncate" title="{!useridentity.Id}"><a href="javascript:void(0);" tabindex="-1">{!useridentity.Id}</a></div>
+                                <th data-label="Id" scope="row">
+                                <div class="slds-truncate" title="{!useridentity.Id}"><a title="{!useridentity.Id}" onclick="getIdentity( this );" href="#" tabindex="-1">{!useridentity.Id}</a></div>
                                 </th>
-                                <td data-label="Account Name">
+                                <td data-label="Identity Type">
                                 <div class="slds-truncate" title="{!useridentity.Type}">{!useridentity.Type}</div>
                                 </td>
-                                <td data-label="Prospecting">
+                                <td data-label="Association">
                                 <div class="slds-truncate" title="{!useridentity.Association}">{!useridentity.Association}</div>
                                 </td>
-                                <td data-label="Confidence">
+                                <td data-label="Cycle">
                                 <div class="slds-truncate" title="{!useridentity.Cycle}">{!useridentity.Cycle}</div>
                                 </td>
-                                <td data-label="Amount">
+                                <td data-label="Institution">
                                 <div class="slds-truncate" title="{!useridentity.Institution}">{!useridentity.Institution}</div>
                                 </td>
                                 </tr>
                                 
                                 </tbody>
         </apex:repeat>
+
+<apex:actionFunction name="passIdentity" action="{!getAllExportsByIdentity}" >
+    <apex:param name="user_identity_id" value=""/>
+</apex:actionFunction>         
+<script type="text/javascript">
+
+    function getIdentity( obj ){
+        alert(obj.title);
+        passIdentity(obj.title);
+
+    } 
+        
+</script>
+</apex:form>                                        
                                 </table>
         
 
 
                 
-        
-</apex:form>
+
 
 
 </apex:slds>

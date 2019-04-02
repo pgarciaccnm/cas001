@@ -8,4 +8,16 @@ public with sharing class CASConnectorController {
 
         return userIdentities;
     }
+
+    public List<CASConnectorIdentity.exports>  getAllExportsByIdentity(){
+
+        String user_identity_id = ApexPages.CurrentPage().getParameters().get('user_identity_id');
+
+        CASConnectorIdentity results = CASConnector.getAllExportsByIdentity(user_identity_id);
+
+        List<CASConnectorIdentity.exports> userIdentities = (List<CASConnectorIdentity.exports>) results.exports;
+
+        return userIdentities;
+
+    }
 }

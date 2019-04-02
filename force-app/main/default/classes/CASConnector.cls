@@ -42,6 +42,30 @@ public with sharing class CASConnector {
     }
 
     /**
+    Retrieve details on all exports (e.g. export templates) that a user has access to within 
+    a specific identity. The id returned for each export is the value that 
+    needs to be provided in order to run that export.
+    {
+        "href": "/api/v1/user_identities/24567/exports",
+        "exports": [
+            {
+            "id": 29897,
+            "name": "Nightly Banner Export",
+            "list_type": "all",
+            "format": "Comma-Separated Values",
+            "mime_type": "text/csv;charset=iso-8859-1"
+            }
+        ]
+        }
+    */
+    public static CASConnectorIdentity getAllExportsByIdentity(String user_identity_id){
+
+        if(user_identity_id.length() == 0) return null;
+
+        return (CASConnectorIdentity) JSON.deserialize(getResult('/api/v1/user_identities/'+user_identity_id+'/exports').getBody(), CASConnectorIdentity.class);
+    }
+
+    /**
     This returns the export List
     */
     public static CASConnectorIdentity getUserIdentities(){

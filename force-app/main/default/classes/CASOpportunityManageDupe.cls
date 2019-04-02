@@ -14,7 +14,7 @@ public with sharing class CASOpportunityManageDupe {
            
         }
         
-        for(Opportunity existOpportunity : [Select Id, Name, AccountId, CloseDate, RecordTypeId, Amount, Type, StageName from Opportunity where AccountId in : newopportunitiesAccountIdMap.keyset() ]){
+        for(Opportunity existOpportunity : [Select Id, Name, AccountId, CloseDate, Amount, Type, StageName from Opportunity where AccountId in : newopportunitiesAccountIdMap.keyset() ]){
             
             for(Opportunity checkopportunity : newopportunities){
                 
