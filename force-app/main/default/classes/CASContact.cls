@@ -72,9 +72,9 @@ public with sharing class CASContact extends CASObject  {
                     }
 
                     //OPPORTUNITY
-					casOpportunity opp = new casOpportunity();
+					//casOpportunity opp = new casOpportunity();
                     
-                    opp.addRecords( recs, collectedHeaderFields, newContact);
+                    //opp.addRecords( recs, collectedHeaderFields, newContact);
                     
                 } catch(DmlException e) {
                         
