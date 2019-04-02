@@ -21,7 +21,6 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-<<<<<<< HEAD
         <apexClass>CASContact</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -30,23 +29,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-=======
->>>>>>> e43a799b522070bd09f83f85c3ac23341f576314
         <apexClass>CASObject</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-<<<<<<< HEAD
-        <apexClass>CASOpportunity</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-        <apexClass>CASOpportunityManageDupe</apexClass>
-        <enabled>true</enabled>
-    </classAccesses>
-    <classAccesses>
-=======
->>>>>>> e43a799b522070bd09f83f85c3ac23341f576314
         <apexClass>DemoController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -60,14 +46,6 @@
         <field>Contact.Cas_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
-<<<<<<< HEAD
-=======
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>ContactCleanInfo.Cas_Id__c</field>
-        <readable>false</readable>
-    </fieldPermissions>
->>>>>>> e43a799b522070bd09f83f85c3ac23341f576314
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>

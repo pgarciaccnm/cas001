@@ -39,7 +39,8 @@
                                 <tbody>
                                 <tr class="slds-hint-parent">
                                 <th data-label="Id" scope="row">
-                                <div class="slds-truncate" title="{!useridentity.Id}"><a title="{!useridentity.Id}" onclick="getIdentity( this );" href="#" tabindex="-1">{!useridentity.Id}</a></div>
+                                <div class="slds-truncate" title="{!useridentity.Id}">
+                                    <a title="{!useridentity.Id}" onclick="if(confirm('You are about to show this record')) passIdentity('{!useridentity.Id}');" href="#" tabindex="-1">{!useridentity.Id}</a></div>
                                 </th>
                                 <td data-label="Identity Type">
                                 <div class="slds-truncate" title="{!useridentity.Type}">{!useridentity.Type}</div>
@@ -58,14 +59,15 @@
                                 </tbody>
         </apex:repeat>
 
-<apex:actionFunction name="passIdentity" action="{!getAllExportsByIdentity}" >
-    <apex:param name="user_identity_id" value=""/>
+<apex:actionFunction name="passIdentity" action="{!getAllExportsByIdentity}" reRender="identityForm" >
+    <apex:param name="useridentityid" value="293880"/>
+    <apex:param name="validate" value=""/>
 </apex:actionFunction>         
 <script type="text/javascript">
 
     function getIdentity( obj ){
         alert(obj.title);
-        passIdentity(obj.title);
+        passIdentity(obj.title, true);
 
     } 
         

@@ -1,5 +1,11 @@
-public with sharing class CASConnectorController {
+public  with sharing class CASConnectorController {
 
+    
+    public CASConnectorController(){
+
+    
+    }
+    
     public List<CASConnectorIdentity.user_identities> getUserIdentities(){
 
         CASConnectorIdentity results = CASConnector.getUserIdentities();
@@ -11,9 +17,11 @@ public with sharing class CASConnectorController {
 
     public List<CASConnectorIdentity.exports>  getAllExportsByIdentity(){
 
-        String user_identity_id = ApexPages.CurrentPage().getParameters().get('user_identity_id');
+        String useridentityid = ApexPages.CurrentPage().getParameters().get('useridentityid');
+        
+        System.debug('cass'+useridentityid);
 
-        CASConnectorIdentity results = CASConnector.getAllExportsByIdentity(user_identity_id);
+        CASConnectorIdentity results = CASConnector.getAllExportsByIdentity(useridentityid);
 
         List<CASConnectorIdentity.exports> userIdentities = (List<CASConnectorIdentity.exports>) results.exports;
 
