@@ -6,7 +6,7 @@ public with sharing class CASConnectorIdentity {
 
         public List<user_identities> user_identities;
 
-        public List<InitExportFile> init_export_file;
+        public List<export_files> export_files;
 
         public class user_identities{
 
@@ -57,7 +57,7 @@ public with sharing class CASConnectorIdentity {
 
         }
 
-        public class InitExportFile{
+        public class export_files{
 
             public String id {get; set;}
 
@@ -69,4 +69,3 @@ public with sharing class CASConnectorIdentity {
         }
 
 }
-

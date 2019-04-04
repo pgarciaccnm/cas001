@@ -1,7 +1,7 @@
 public with sharing class CASInitExportFileController {
     
     public CASInitExportFileController() {
-
+        getExportFileByIdentity();
     }
 
        
@@ -12,25 +12,27 @@ public with sharing class CASInitExportFileController {
         String downloadURL = '';
 
         String results = CASConnector.downloadFile(downloadURL);
-
-
         
         return null;
     }
     
        
-    public List<CASConnectorIdentity.InitExportFile>  getExportFileByIdentity(){
+    public List<CASConnectorIdentity.export_files>  getExportFileByIdentity(){
 
         String useridentityid = ApexPages.CurrentPage().getParameters().get('useridentityid');
 
         String exportid = ApexPages.CurrentPage().getParameters().get('exportid');
         
-        System.debug('cass'+useridentityid);
+        system.debug('cas'+useridentityid+'|'+exportid);
+        
+
 
         CASConnectorIdentity results = CASConnector.getInitExportFile(useridentityid, exportid);
 
-        List<CASConnectorIdentity.InitExportFile> initExportFiles = (List<CASConnectorIdentity.InitExportFile>) results.init_export_file;
+        List<CASConnectorIdentity.export_files> initExportFiles = (List<CASConnectorIdentity.export_files>) results.export_files;
 
+        System.debug('casa'+initExportFiles);
+        
         return initExportFiles;
 
     }
