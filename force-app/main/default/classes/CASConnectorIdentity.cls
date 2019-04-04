@@ -6,6 +6,8 @@ public with sharing class CASConnectorIdentity {
 
         public List<user_identities> user_identities;
 
+        public List<InitExportFile> init_export_file;
+
         public class user_identities{
 
             //"id":138281,"type":"Admissions User","organization":"Canadian College of Naturopathic Medicine","association":"NDCAS","cycle":"2015 - 2016","institution":"Canadian College of Naturopathic Medicine"
@@ -53,6 +55,17 @@ public with sharing class CASConnectorIdentity {
 
             public String name {get; set;}
 
+        }
+
+        public class InitExportFile{
+
+            public String id {get; set;}
+
+            public String href {get; set;}
+
+            public Integer export_id {get; set;}
+
+            public String status {get; set;}
         }
 
 }

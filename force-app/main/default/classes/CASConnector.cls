@@ -97,6 +97,31 @@ public with sharing class CASConnector {
        return (CASConnectorIdentity) JSON.deserialize(getResult('/api/v1/exports').getBody(), CASConnectorIdentity.class);
 
     }
+
+        
+    /**
+    Initiate the background execution of a specific export (e.g. export template). 
+    Required parameters are the identity that the export belongs to, and the id of the export that you wish to run. 
+    This will create an instance of a running export_file, which is what you can monitor to determine when the export is ready to be downloaded. 
+    The id in the response from this call is the handle to that running export_file and what is used in future calls to check on the status of the run.
+
+    {
+        "export_files": {
+            "id": 74780,
+            "href": "/api/v1/exports/86466/export_files/74780",
+            "export_id": 86446,
+            "status": "Available"
+        }
+    }
+    */
+    public static CASConnectorIdentity getInitExportFile(String user_identity_id, String export_list_id){
+
+        if(user_identity_id.length() == 0 || export_list_id.length() == 0) return null;
+
+        return (CASConnectorIdentity) JSON.deserialize(getResult('/api/v1/user_identities/'+user_identity_id+'/exports/'+export_list_id+'/export_files').getBody(), CASConnectorIdentity.class);
+
+    }  
+
     
     public Map<String, Object> user_identitiesByIdentity(String identityId){
         
@@ -134,13 +159,7 @@ public with sharing class CASConnector {
 
     }
     
-    public Map<String, Object> exportFileInitiate(String identityId, String exportListId){
-        
-        Map<String, Object> m = (Map<String, Object>)JSON.deserializeUntyped(buildRequest('/api/v1/user_identities/'+identityId+'/exports/'+exportListId+'/export_files'));
-        
-        return (Map<String, Object>) m.get('export_files');
 
-    }   
     
     /**
     DONT TOUCH!!!!!!
