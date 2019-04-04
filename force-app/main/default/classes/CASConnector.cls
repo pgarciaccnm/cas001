@@ -174,7 +174,7 @@ public with sharing class CASConnector {
     } 
     
         
-    public String downloadFile(String downloadURL){
+    public static String downloadFile(String downloadURL){
         
       	if(downloadURL == '') return '';
         

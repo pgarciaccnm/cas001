@@ -5,9 +5,15 @@ public with sharing class CASInitExportFileController {
     }
 
        
-    public PageReference getAllExportFileByIdentityView(){
+    public PageReference getRecordFile(){
         
         getExportFileByIdentity();
+
+        String downloadURL = '';
+
+        String results = CASConnector.downloadFile(downloadURL);
+
+
         
         return null;
     }
