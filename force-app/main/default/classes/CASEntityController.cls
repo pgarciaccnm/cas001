@@ -1,27 +1,15 @@
-public  with sharing class CASConnectorController {
+public class CASEntityController {
 
-    
-    public CASConnectorController(){
-
-    
-    }
-    
-    public List<CASConnectorIdentity.user_identities> getUserIdentities(){
-
-        CASConnectorIdentity results = CASConnector.getUserIdentities();
-
-        List<CASConnectorIdentity.user_identities> userIdentities = (List<CASConnectorIdentity.user_identities>) results.user_identities;
-
-        return userIdentities;
-    }
-    
+    public CASEntityController(){}
+        
     public PageReference getAllExportByIdentityView(){
         
         getAllExportsByIdentity();
         
         return null;
     }
-
+    
+       
     public List<CASConnectorIdentity.exports>  getAllExportsByIdentity(){
 
         String useridentityid = ApexPages.CurrentPage().getParameters().get('useridentityid');

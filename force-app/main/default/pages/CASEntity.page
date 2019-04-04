@@ -1,5 +1,5 @@
-<apex:page controller="CASConnectorController">
-<apex:slds >
+<apex:page controller="CASEntityController" >
+    <apex:slds >
                 <div class="demo-only" >
                                 <article class="slds-tile">
                                 <h1 class="slds-tile__title slds-truncate" title="Salesforce UX">User Identity</h1>
@@ -21,21 +21,21 @@
                                 <div class="slds-truncate" title="Opportunity Name">Id</div>
                                 </th>
                                 <th class="" scope="col">
-                                <div class="slds-truncate" title="Account Name">Type</div>
+                                <div class="slds-truncate" title="Account Name">Name</div>
                                 </th>
                                 <th class="" scope="col">
-                                <div class="slds-truncate" title="Stage">Association</div>
+                                <div class="slds-truncate" title="Stage">List_Type</div>
                                 </th>
                                 <th class="" scope="col">
-                                <div class="slds-truncate" title="Confidence">Cycle</div>
+                                <div class="slds-truncate" title="Confidence">Format</div>
                                 </th>
                                 <th class="" scope="col">
-                                <div class="slds-truncate" title="Amount">Institution</div>
+                                <div class="slds-truncate" title="Amount">Mime_Type</div>
                                 </th>
                                 </tr>
                                 </thead>
 <apex:form id="identityForm">
-        <apex:repeat value="{!userIdentities}" var="useridentity">                               
+        <apex:repeat value="{!allExportsByIdentity}" var="useridentity">                               
                                 <tbody>
                                 <tr class="slds-hint-parent">
                                 <th data-label="Id" scope="row">
@@ -43,16 +43,16 @@
                                     <a title="{!useridentity.Id}" onclick="if(confirm('You are about to show this record')) passIdentity('{!useridentity.Id}');" href="#" tabindex="-1">{!useridentity.Id}</a></div>
                                 </th>
                                 <td data-label="Identity Type">
-                                <div class="slds-truncate" title="{!useridentity.Type}">{!useridentity.Type}</div>
+                                <div class="slds-truncate" title="{!useridentity.Name}">{!useridentity.Name}</div>
                                 </td>
                                 <td data-label="Association">
-                                <div class="slds-truncate" title="{!useridentity.Association}">{!useridentity.Association}</div>
+                                <div class="slds-truncate" title="{!useridentity.list_type}">{!useridentity.list_type}</div>
                                 </td>
                                 <td data-label="Cycle">
-                                <div class="slds-truncate" title="{!useridentity.Cycle}">{!useridentity.Cycle}</div>
+                                <div class="slds-truncate" title="{!useridentity.format}">{!useridentity.format}</div>
                                 </td>
                                 <td data-label="Institution">
-                                <div class="slds-truncate" title="{!useridentity.Institution}">{!useridentity.Institution}</div>
+                                <div class="slds-truncate" title="{!useridentity.mime_type}">{!useridentity.mime_type}</div>
                                 </td>
                                 </tr>
                                 
@@ -73,13 +73,7 @@
         
 </script>
 </apex:form>                                        
-                                </table>
-        
-
-
-                
-
-
-
-</apex:slds>
+                                
+</table>    
+    </apex:slds>
 </apex:page>
