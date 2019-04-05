@@ -40,6 +40,26 @@ public with sharing class CASConnector {
 
         return '';
     }
+    
+    public static String getCSV(String user_identity_id, String export_list_id){
+        
+        CASConnectorIdentity initExportFiles =  getInitExportFile( user_identity_id,  export_list_id);
+//curl -n https://api.webadmit.org/api/v1/exports/419356/export_files/331079 \  -H "x-api-key: 5e86514a4d1c4c05e92004afd0b1360b"
+List<CASConnectorIdentity.export_files> initExportFiles1 = (List<CASConnectorIdentity.export_files>) initExportFiles.export_files;
+system.debug('casza'+initExportFiles1);
+        System.debug('cassl'+initExportFiles1[0].export_id+'-'+initExportFiles1[0].id);
+        System.debug('cassa'+getExportURLFILE(initExportFiles1[0].export_id, initExportFiles1[0].id).get('download_url'));
+        
+        return downloadFile( (String) getExportURLFILE(initExportFiles1[0].export_id, initExportFiles1[0].id).get('download_url'));
+    }
+    
+    public static Map<String, Object> getExportURLFILE(Integer exports, String export_file){
+
+        //return (CASConnectorIdentity) JSON.deserialize(getResult('/api/v1/exports/'+exports+'/export_files/'+export_file).getBody(), CASConnectorIdentity.class);
+        Map<String, Object> m = (Map<String, Object>)JSON.deserializeUntyped(buildRequest('/api/v1/exports/'+exports+'/export_files/'+export_file));
+        
+        return (Map<String, Object>) m.get('export_files');
+    }
 
     /**
     Retrieve details on all exports (e.g. export templates) that a user has access to within 
@@ -133,6 +153,7 @@ public with sharing class CASConnector {
 
     public static HttpResponse getResult(String endpoint){
 
+        System.debug('casspoint'+endpoint);
         //String endpoint = '/api/v1/user_identities';
         Http http = new Http();
         HttpRequest request = new HttpRequest();

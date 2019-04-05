@@ -1,6 +1,12 @@
 public class CASEntityController {
 
+
     public CASEntityController(){}
+    
+    public String getUseridentityid(){
+        
+        return ApexPages.CurrentPage().getParameters().get('useridentityid');
+    }
         
     public PageReference getAllExportByIdentityView(){
         
@@ -12,11 +18,11 @@ public class CASEntityController {
        
     public List<CASConnectorIdentity.exports>  getAllExportsByIdentity(){
 
-        String useridentityid = ApexPages.CurrentPage().getParameters().get('useridentityid');
+        //String useridentityid = ApexPages.CurrentPage().getParameters().get('useridentityid');
         
-        System.debug('cass'+useridentityid);
+        System.debug('cass'+getUseridentityid());
 
-        CASConnectorIdentity results = CASConnector.getAllExportsByIdentity(useridentityid);
+        CASConnectorIdentity results = CASConnector.getAllExportsByIdentity(getUseridentityid());
 
         List<CASConnectorIdentity.exports> userIdentities = (List<CASConnectorIdentity.exports>) results.exports;
 

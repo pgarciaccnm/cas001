@@ -35,12 +35,14 @@
                                 </tr>
                                 </thead>
 <apex:form id="identityForm">
+    	<apex:variable var="identityid" value="{!useridentityid}" /> 
+
         <apex:repeat value="{!allExportsByIdentity}" var="useridentity">                               
                                 <tbody>
                                 <tr class="slds-hint-parent">
                                 <th data-label="Id" scope="row">
                                 <div class="slds-truncate" title="{!useridentity.Id}">
-                                    <a title="{!useridentity.Id}"  href="#" tabindex="-1">{!useridentity.Id}</a></div>
+                                    <a title="{!useridentity.Id}"  href="/apex/CASRecordFile?useridentityid={!identityid}&exportid={!useridentity.Id}" tabindex="-1">{!useridentity.Id}</a></div>
                                 </th>
                                 <td data-label="Identity Type">
                                 <div class="slds-truncate" title="{!useridentity.Name}">{!useridentity.Name}</div>

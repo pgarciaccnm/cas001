@@ -66,6 +66,8 @@ public with sharing class CASConnectorIdentity {
             public Integer export_id {get; set;}
 
             public String status {get; set;}
+            
+//            public String download_url  {get; set;}
         }
 
 }
