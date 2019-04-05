@@ -24,6 +24,16 @@ public with sharing class CASConnector {
     }
 
 
+    public static String invokeUpdateExport(){
+        /**
+         * curl -n -X POST https://api.webadmit.org/api/v1/user_identities/293880/exports/419356/export_files \
+  -d '{
+  "callback": "http://someurl.com/your_callback.cgi"
+}' \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: 5e86514a4d1c4c05e92004afd0b1360b"*/
+        return null;
+    }
     public static String buildRequest (String endpoint){
                
         Http http = new Http();
