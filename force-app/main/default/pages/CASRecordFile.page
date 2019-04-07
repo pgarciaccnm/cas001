@@ -2,9 +2,10 @@
     <h1>
         CSV file
     </h1>
-    <apex:outputText >
-        {!CSV}
-    </apex:outputText>
+    <apex:repeat value="{!header}" var="mheader">
+        {!mheader}<br />
+    </apex:repeat>
+
 
               
 
