@@ -1,10 +1,75 @@
 <apex:page controller="CASInitExportFileController" >
+<apex:slds >
     <h1>
         CSV file
     </h1>
-    <apex:repeat value="{!header}" var="mheader">
-        {!mheader}<br />
-    </apex:repeat>
+<style>
+    .rowheader{
+    text-transform: uppercase;
+    }
+    .#{$css-prefix}scrollable {
+  @include scrollbar;
+  @include enable-ios-momentum-scrolling;
+  overflow: auto;
+  max-width:100%; //this 
+  max-height:100% //and this
+}
+</style>
+<div class="slds-scrollable" >
+<p>Scrollable Content Here</p>
+<div class="slds-text-longform" style="width: 200%;">
+
+    
+<table class="slds-table slds-table_cell-buffer slds-table_bordered">
+<thead>
+<tr class="slds-line-height_reset">
+<apex:repeat value="{!header}" var="mheader">
+<th class="" scope="col">
+<div class="slds-truncate rowheader" title="{!mheader}">{!mheader}</div>
+</th>
+</apex:repeat>
+
+</tr>
+</thead>
+<tbody>
+<apex:repeat value="{!rows}" var="row">
+<tr class="slds-hint-parent">
+<apex:repeat value="{!row}" var="column">
+<th data-label="Opportunity Name" scope="row">
+<div class="slds-truncate" title="{!column}"><a href="javascript:void(0);" tabindex="-1">{!column}</a></div>
+</th>
+</apex:repeat>
+    <!--
+<td data-label="Account Name">
+<div class="slds-truncate" title="Cloudhub">Cloudhub</div>
+</td>
+<td data-label="Close Date">
+<div class="slds-truncate" title="4/14/2015">4/14/2015</div>
+</td>
+<td data-label="Prospecting">
+<div class="slds-truncate" title="Prospecting">Prospecting</div>
+</td>
+<td data-label="Confidence">
+<div class="slds-truncate" title="20%">20%</div>
+</td>
+<td data-label="Amount">
+<div class="slds-truncate" title="$25k">$25k</div>
+</td>
+<td data-label="Contact">
+<div class="slds-truncate" title="jrogers@cloudhub.com"><a href="javascript:void(0);" tabindex="-1">jrogers@cloudhub.com</a></div>
+</td>-->
+</tr>
+</apex:repeat>
+</tbody>
+</table>
+
+
+
+</div>
+</div>   
+    
+    
+</apex:slds>
 
 
               

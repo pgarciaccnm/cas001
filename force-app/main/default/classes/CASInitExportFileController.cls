@@ -28,6 +28,11 @@ public with sharing class CASInitExportFileController {
         return CASCsv.getCSVHeader(getCSV());
     }
     
+    public List<List<String>> getRows(){
+        
+        return CASCsv.getCSVRows(getCSV());
+    }
+    
     public String getCSV(){
         String useridentityid = ApexPages.CurrentPage().getParameters().get('useridentityid');
 
