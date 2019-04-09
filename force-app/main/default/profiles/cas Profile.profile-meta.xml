@@ -9,6 +9,10 @@
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CASConfigController</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CASConnector</apexClass>
         <enabled>false</enabled>
     </classAccesses>
@@ -26,6 +30,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>CASContactManageDupe</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CASCsv</apexClass>
         <enabled>false</enabled>
     </classAccesses>
     <classAccesses>
@@ -99,6 +107,11 @@
     <custom>true</custom>
     <fieldPermissions>
         <editable>false</editable>
+        <field>CAS_Config__c.x_api_key__c</field>
+        <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.Cas_Id__c</field>
         <readable>false</readable>
     </fieldPermissions>
@@ -107,6 +120,9 @@
         <field>ContactCleanInfo.Cas_Id__c</field>
         <readable>false</readable>
     </fieldPermissions>
+    <layoutAssignments>
+        <layout>CAS_Config__c-CAS Config Layout</layout>
+    </layoutAssignments>
     <layoutAssignments>
         <layout>Contact-Contact Layout</layout>
     </layoutAssignments>
@@ -125,6 +141,10 @@
     <pageAccesses>
         <apexPage>CASCallback</apexPage>
         <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
+        <apexPage>CASConfig</apexPage>
+        <enabled>false</enabled>
     </pageAccesses>
     <pageAccesses>
         <apexPage>CASConnector</apexPage>

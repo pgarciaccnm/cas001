@@ -1,4 +1,6 @@
 <apex:page controller="CASInitExportFileController" >
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"/>
+    
 <apex:slds >
     <h1>
         CSV file
@@ -19,7 +21,14 @@
 <p>Scrollable Content Here</p>
 <div class="slds-text-longform" style="width: 200%;">
 
-    
+<div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+<input class="slds-input slds-combobox__input" id="searchid" aria-autocomplete="list" aria-controls="listbox-unique-id" autocomplete="off" role="textbox" type="text" placeholder="Search Salesforce" value="" />
+<span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+<svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#search" />
+</svg>
+</span>
+</div>    
 <table class="slds-table slds-table_cell-buffer slds-table_bordered">
 <thead>
 <tr class="slds-line-height_reset">
@@ -73,5 +82,44 @@
 
 
               
+        <script>
+ 
+    
+            $(document)
+                    .ready(
+                            function() {
 
+                                //Searching & removing
+                                $('#searchid').keyup(function() {
+                                    search_table($(this).val());
+                                });
+                                function search_table(value) {
+
+                                    $('.slds-hint-parent')
+                                            .each(
+                                                    function() {
+                                                        var found = 'false';
+                                                        $(this)
+                                                                .each(
+                                                                        function() {
+                                                                            if ($(
+                                                                                    this)
+                                                                                    .text()
+                                                                                    .toLowerCase()
+                                                                                    .indexOf(
+                                                                                            value
+                                                                                                    .toLowerCase()) >= 0) {
+                                                                                found = 'true';
+                                                                            }
+                                                                        });
+                                                        if (found == 'true') {
+                                                            $(this).show();
+                                                        } else {
+                                                            $(this).hide();
+                                                        }
+                                                    });
+                                    //END: Searching & removing
+                                }
+                            });
+        </script>
 </apex:page>

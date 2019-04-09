@@ -1,0 +1,17 @@
+<apex:page >
+    <apex:slds >
+        <apex:form >
+    <div class="slds-form">
+<div class="slds-form-element slds-form-element_horizontal">
+<label class="slds-form-element__label" for="horizontal-input-id-01">API Key</label>
+<div class="slds-form-element__control">
+<input type="text" id="horizontal-input-id-01" placeholder="1234Hef890987fsc65432" class="slds-input" />
+</div>
+</div>
+
+
+
+</div>
+        </apex:form>
+    </apex:slds>
+</apex:page>
