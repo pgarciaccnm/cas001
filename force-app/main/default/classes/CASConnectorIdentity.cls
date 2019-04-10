@@ -7,6 +7,7 @@ public with sharing class CASConnectorIdentity {
         public List<user_identities> user_identities;
 
         public List<export_files> export_files;
+    
 
         public class user_identities{
 
@@ -67,7 +68,6 @@ public with sharing class CASConnectorIdentity {
 
             public String status {get; set;}
             
-//            public String download_url  {get; set;}
         }
 
 }

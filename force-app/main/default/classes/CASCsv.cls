@@ -6,6 +6,7 @@ public class CASCsv {
     
     private static String REGEX_001 = ',(?!(?:[^"]*"[^"]*")*[^"]*$)';
     
+
     public static List<String> getCSVHeader(String csv){
         
         String headerString = csv.split('\n').get(0);
@@ -16,6 +17,7 @@ public class CASCsv {
        
     }
     
+
     public static List<List<String>> getCSVRows(String csv){
         
         List<List<String>> casBodyLine = new List<List<String>>();

@@ -48,25 +48,7 @@
 <div class="slds-truncate" title="{!column}"><a href="javascript:void(0);" tabindex="-1">{!column}</a></div>
 </th>
 </apex:repeat>
-    <!--
-<td data-label="Account Name">
-<div class="slds-truncate" title="Cloudhub">Cloudhub</div>
-</td>
-<td data-label="Close Date">
-<div class="slds-truncate" title="4/14/2015">4/14/2015</div>
-</td>
-<td data-label="Prospecting">
-<div class="slds-truncate" title="Prospecting">Prospecting</div>
-</td>
-<td data-label="Confidence">
-<div class="slds-truncate" title="20%">20%</div>
-</td>
-<td data-label="Amount">
-<div class="slds-truncate" title="$25k">$25k</div>
-</td>
-<td data-label="Contact">
-<div class="slds-truncate" title="jrogers@cloudhub.com"><a href="javascript:void(0);" tabindex="-1">jrogers@cloudhub.com</a></div>
-</td>-->
+   
 </tr>
 </apex:repeat>
 </tbody>

@@ -24,16 +24,45 @@ public with sharing class CASConnector {
     }
 
 
-    public static String invokeUpdateExport(){
-        /**
-         * curl -n -X POST https://api.webadmit.org/api/v1/user_identities/293880/exports/419356/export_files \
-  -d '{
-  "callback": "http://someurl.com/your_callback.cgi"
-}' \
-  -H "Content-Type: application/json" \
-  -H "x-api-key: 5e86514a4d1c4c05e92004afd0b1360b"*/
-        return null;
+    /**
+     * Initiate the background execution of a specific export (e.g. export template). 
+     * Required parameters are the identity that the export belongs to, and the id of 
+     * the export that you wish to run. This will create an instance of a running export_file, 
+     * which is what you can monitor to determine when the export is ready to be downloaded. 
+     * The id in the response from this call is the handle to that running export_file and 
+     * what is used in future calls to check on the status of the run.
+     * 
+     * {
+          "export_files": {
+            "id": 419356,
+            "href": "/api/v1/exports/293880/export_files/419356",
+            "export_id": 293880,
+            "status": "Available"
+          }
+        }
+     */
+    public static CASConnectorIdentifyInvoked invokeUpdateExport(String user_identity_id, String export_list_id){
+ 
+        return (CASConnectorIdentifyInvoked) JSON.deserialize(buildRequestInvoke( '/api/v1/user_identities/'+user_identity_id+'/exports/'+export_list_id+'/export_files').getBody(), CASConnectorIdentifyInvoked.class);
+
     }
+    
+    public static HttpResponse buildRequestInvoke(String endpoint){
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+		request.setMethod('POST');
+		request.setEndpoint('https://api.webadmit.org' + endpoint);
+		request.setHeader('x-api-key', '5e86514a4d1c4c05e92004afd0b1360b');
+        HttpResponse response = http.send(request);
+
+        if (response.getStatusCode() == 200) {
+            
+            return response;
+        }
+
+        return null;        
+    }
+    
     public static String buildRequest (String endpoint){
                
         Http http = new Http();
@@ -55,8 +84,9 @@ public with sharing class CASConnector {
         
         CASConnectorIdentity initExportFiles =  getInitExportFile( user_identity_id,  export_list_id);
 //curl -n https://api.webadmit.org/api/v1/exports/419356/export_files/331079 \  -H "x-api-key: 5e86514a4d1c4c05e92004afd0b1360b"
-List<CASConnectorIdentity.export_files> initExportFiles1 = (List<CASConnectorIdentity.export_files>) initExportFiles.export_files;
-system.debug('casza'+initExportFiles1);
+        List<CASConnectorIdentity.export_files> initExportFiles1 = (List<CASConnectorIdentity.export_files>) initExportFiles.export_files;
+        system.debug('casza'+initExportFiles1);
+                
         System.debug('cassl'+initExportFiles1[0].export_id+'-'+initExportFiles1[0].id);
         System.debug('cassa'+getExportURLFILE(initExportFiles1[0].export_id, initExportFiles1[0].id).get('download_url'));
         
